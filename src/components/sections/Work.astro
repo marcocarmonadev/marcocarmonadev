@@ -1,0 +1,74 @@
+---
+const jobs = [
+  {
+    title: "Software Developer",
+    company: "Sinecta",
+    period: "May 2022 – Present · Contract · Remote",
+    description:
+      "Four years of expanding ownership across data engineering, backend development, and cloud infrastructure — from ETL pipelines and automation to full-stack product work and end-to-end responsibility for the company's cloud architecture.",
+    last: false,
+  },
+  {
+    title: "Frontend Developer",
+    company: "Mahesa Mexico",
+    period: "2024 · ~6 months · Freelance · Remote",
+    description:
+      "Sole developer on the company's customer-facing website — handling implementation and deployment from start to launch using PHP, JavaScript, and Tailwind CSS.",
+    last: false,
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Moving Flasht",
+    period: "2023 · ~1 year · Freelance · Remote",
+    description:
+      "Sole developer responsible for designing and shipping the company's quoting system from scratch — replacing a fully manual, spreadsheet-based workflow with a production-ready web application backed by real route data and a structured item catalog.",
+    last: true,
+  },
+];
+---
+
+<section id="work" class="bg-muted border-t border-border">
+  <div class="max-w-[1120px] mx-auto px-6 py-12 lg:px-16 lg:py-20">
+    <h2 class="text-[32px] lg:text-4xl font-bold tracking-[-0.02em] text-dark mt-0 mb-10 lg:mb-16">
+      Work
+    </h2>
+
+    <div class="relative ml-1.5 lg:ml-2 border-l border-border">
+      {
+        jobs.map((job) => (
+          <div class={`relative pl-6 lg:pl-10 ${job.last ? "" : "pb-12 lg:pb-16"}`}>
+            <div class="absolute left-[-5px] lg:left-[-6px] top-1.5 lg:top-2 w-[9px] lg:w-[11px] h-[9px] lg:h-[11px] rounded-full bg-accent shadow-[0_0_0_3px_#F4F5F7] lg:shadow-[0_0_0_4px_#F4F5F7]" />
+
+            <div class="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-3 lg:gap-10 items-start">
+              <div>
+                <div class="text-[20px] lg:text-[22px] font-bold tracking-[-0.015em] leading-[1.15] text-dark mb-1.5 lg:mb-2">
+                  {job.title}
+                </div>
+                <div class="text-xs font-semibold tracking-[0.08em] uppercase text-text-secondary mb-3 lg:mb-3.5">
+                  {job.company}
+                </div>
+                <div class="font-mono text-[12px] lg:text-[13px] tracking-[0.06em] text-text-secondary">
+                  {job.period}
+                </div>
+              </div>
+              <div>
+                <p class="text-[15px] lg:text-base leading-[1.65] text-text-secondary mt-3.5 lg:mt-0">
+                  {job.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-border">
+      <a
+        href="#projects"
+        class="font-mono text-xs tracking-[0.08em] uppercase text-accent no-underline inline-flex items-center gap-2 hover:text-accent-dark transition-colors"
+      >
+        Projects from these roles ↓
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import NavDesktop from "../components/NavDesktop.astro";
+import NavMobile from "../components/NavMobile";
+import About from "../components/sections/About.astro";
+import Contact from "../components/sections/Contact.astro";
+import Hero from "../components/sections/Hero.astro";
+import Milestones from "../components/sections/Milestones.astro";
+import Projects from "../components/sections/Projects.astro";
+import Work from "../components/sections/Work.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Marco Carmona — Fullstack Software Engineer">
+  <NavDesktop />
+  <NavMobile client:load />
+  <div class="hidden md:block h-[52px]" aria-hidden="true"></div>
+  <Hero />
+  <Work />
+  <Projects />
+  <Milestones />
+  <About />
+  <Contact />
+</Layout>

@@ -1,0 +1,78 @@
+---
+const milestones = [
+  {
+    year: "2023",
+    title: "Electron-Phonon Coupling & Superconductivity in α-MoB₂",
+    href: "https://iopscience.iop.org/article/10.1088/1402-4896/ad03c7/meta",
+    org: "IFUAP",
+    description:
+      "Co-authored a computational physics paper published in Physica Scripta (IOP Publishing) on electron-phonon coupling in α-MoB₂ under pressure — handling data extraction, computational result processing, and scientific visualization across a first-principles study.",
+  },
+  {
+    year: "2023",
+    title: "1st Place · Internal AI Hackathon",
+    href: null,
+    org: "Sinecta",
+    description:
+      "Won Sinecta's inaugural AI hackathon by building an LLM-powered agronomic report generator — automating analysis and interpretation of field data for agricultural producers.",
+  },
+  {
+    year: "2022",
+    title: "Scholarship · Haciendo Ciencia en la BUAP",
+    href: "https://viep.buap.mx/divulgacion/content/listado-de-estudiantes-aceptados-haciendo-ciencia-en-la-buap-2022",
+    org: "BUAP",
+    description:
+      "Awarded a competitive academic scholarship for a first-principles computational study of MoB₂ lattice dynamics under pressure, as part of BUAP's annual science program.",
+  },
+];
+---
+
+<section id="milestones" class="bg-muted border-t border-border">
+  <div class="max-w-[1120px] mx-auto px-6 py-12 lg:px-16 lg:py-20">
+    <h2 class="text-[32px] lg:text-4xl font-bold tracking-[-0.02em] text-dark mt-0 mb-8 lg:mb-8">
+      Milestones
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-px lg:bg-border">
+      {
+        milestones.map((milestone, i) => (
+          <div
+            class={`bg-muted border-t border-border py-10 ${
+              i === 0 ? "lg:pr-10" : i === 1 ? "lg:px-10" : "lg:pl-10"
+            }`}
+          >
+            <div class="font-mono text-xs tracking-[0.1em] uppercase text-text-tertiary mb-2">
+              {milestone.year}
+            </div>
+
+            {milestone.href ? (
+              <a
+                href={milestone.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="no-underline text-inherit block"
+              >
+                <div class="text-[20px] font-bold tracking-[-0.02em] leading-[1.15] text-dark mb-2.5">
+                  {milestone.title}
+                  <span class="text-[13px] font-normal text-accent align-middle ml-1">↗</span>
+                </div>
+              </a>
+            ) : (
+              <div class="text-[20px] font-bold tracking-[-0.02em] leading-[1.15] text-dark mb-2.5">
+                {milestone.title}
+              </div>
+            )}
+
+            <div class="text-xs font-semibold tracking-[0.08em] uppercase text-accent mb-4">
+              {milestone.org}
+            </div>
+
+            <p class="text-[15px] leading-[1.65] text-text-secondary mt-0">
+              {milestone.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

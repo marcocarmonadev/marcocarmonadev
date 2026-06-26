@@ -1,0 +1,148 @@
+---
+const projects = [
+  {
+    title: "AWS Infrastructure Platform Overhaul",
+    company: "Sinecta",
+    image: "/images/aws_diagram_desktop.png",
+    imageAlt: "AWS infrastructure architecture diagram",
+    imageBg: "bg-[#F0F2F5]",
+    imageFit: "object-contain",
+    tags: ["AWS CDK", "TypeScript", "ECS", "VPC", "IAM", "ALB", "ECS Service Connect", "GitHub Actions"],
+    summary:
+      "Designed and implemented a complete AWS infrastructure platform using CDK, replacing isolated EC2-based services with standardized infrastructure across dev, staging, and production.",
+    bullets: [
+      "Built the foundational cloud layer: VPCs, subnets, IAM roles, ECS clusters, ECR repositories, load balancers, and ACM-managed certificates.",
+      "Introduced isolated environments with autoscaling ECS services and private service-to-service communication using ECS Service Connect.",
+      "Created reusable CDK constructs to standardize infrastructure patterns across services.",
+      "Reduced infrastructure costs by 65% and standardized CI/CD with GitHub Actions using build-once, promote-many deployments.",
+    ],
+  },
+  {
+    title: "Satellite Imagery Processing Pipeline",
+    company: "Sinecta",
+    image: "/images/sentinel_ndvi.jpg",
+    imageAlt: "Sentinel-2 NDVI output over agricultural parcels",
+    imageBg: "",
+    imageFit: "object-cover",
+    tags: ["Sentinel-2", "Rasterio", "Prefect", "ECS Fargate", "Python", "S3"],
+    summary:
+      "Rebuilt a manual SentinelHub-dependent imagery workflow into an automated Sentinel-2 processing pipeline using public COG files on S3.",
+    bullets: [
+      "Processed 1.5 years of historical data in ~43 seconds for new projects.",
+      "Reduced daily batch processing to under 30 minutes across tens of thousands of parcels.",
+      "Used Rasterio and matrix-based operations for spectral band extraction and index computation.",
+      "Orchestrated concurrent workloads with Prefect and ECS Fargate.",
+    ],
+  },
+  {
+    title: "Freight Quotation System",
+    company: "Moving Flasht",
+    image: "/images/quotation_system_mock_ui_clean_grid.png",
+    imageAlt: "Freight quotation system UI",
+    imageBg: "bg-[#F0F2F5]",
+    imageFit: "object-contain",
+    tags: ["FastAPI", "Reflex", "Docker", "Cloud Run", "PostgreSQL", "Google Maps API"],
+    summary:
+      "Built a web-based freight quotation platform to replace manual Excel-based pricing and hand-calculated route estimates.",
+    bullets: [
+      "Reduced quote generation time from ~10 minutes to under 1 minute.",
+      "Automated volume estimation, labor calculation, and distance-based route pricing.",
+      "Integrated Google Maps API to calculate routes with and without tolls.",
+      "Deployed backend and frontend services with Docker on Google Cloud Run.",
+    ],
+  },
+  {
+    title: "Agricultural Cost Data Extraction Pipeline",
+    company: "Sinecta",
+    image: "/images/maiz_tmf_morelos_pv_2026.png",
+    imageAlt: "FIRA agricultural cost data sheet",
+    imageBg: "bg-[#FAFAF8]",
+    imageFit: "object-contain",
+    tags: ["BeautifulSoup", "pydantic-ai", "FastAPI", "PostgreSQL", "Docker", "ECS"],
+    summary:
+      "Built a pipeline to extract agricultural cost benchmarks from FIRA PDF catalogs, where table layouts varied across crop cycles and broke rule-based parsers.",
+    bullets: [
+      "Increased coverage from ~10 PDFs per season to the full catalog — up to 70 PDFs per season.",
+      "Replaced brittle PDF parsing rules with an AI-assisted extraction pipeline.",
+      "Scraped, downloaded, parsed, validated, and stored benchmark data in PostgreSQL.",
+      "Exposed the processed data through a FastAPI CRUD API.",
+    ],
+  },
+  {
+    title: "Sentinel-2 Cloud Detection Model",
+    company: "Sinecta",
+    image: "/images/sentinel_scm.jpg",
+    imageAlt: "Sentinel-2 scene classification map",
+    imageBg: "",
+    imageFit: "object-cover",
+    tags: ["scikit-learn", "AWS SageMaker", "Sentinel-2", "Python"],
+    summary:
+      "Trained and deployed a custom pixel-level cloud detection model for Sentinel-2 imagery used in agricultural parcel analysis.",
+    bullets: [
+      "Achieved accurate cloud detection on ~90% of parcels.",
+      "Outperformed s2cloudless and Sentinel-2 SCL under real-world field conditions.",
+      "Integrated the model into the imagery pipeline to mask cloud-contaminated pixels before band extraction.",
+      "Reduced invalid readings caused by cloud-covered satellite imagery.",
+    ],
+  },
+];
+---
+
+<section id="projects" class="bg-white border-t border-border">
+  <div class="max-w-[1120px] mx-auto px-6 py-12 lg:px-16 lg:py-20">
+    <h2 class="text-[32px] lg:text-4xl font-bold tracking-[-0.02em] text-dark mt-0 mb-8 lg:mb-14">
+      Projects
+    </h2>
+
+    <div class="flex flex-col">
+      {
+        projects.map((project) => (
+          <div class="py-8 lg:py-10 border-t border-border">
+            <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 lg:gap-12 items-start">
+
+              <div class={`aspect-[16/9] lg:aspect-[4/3] rounded-md overflow-hidden border border-border ${project.imageBg} order-last lg:order-first`}>
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  class={`w-full h-full ${project.imageFit} block`}
+                />
+              </div>
+
+              <div>
+                <div class="flex flex-col lg:flex-row lg:items-baseline lg:justify-between gap-1 lg:gap-6 mb-3">
+                  <div class="text-[22px] lg:text-2xl font-bold text-dark">
+                    {project.title}
+                  </div>
+                  <div class="font-mono text-[11px] lg:text-xs tracking-[0.08em] uppercase text-text-secondary whitespace-nowrap">
+                    {project.company}
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {project.tags.map((tag) => (
+                    <span class="font-mono text-[11px] text-text-secondary border border-border rounded px-[9px] py-[3px]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <p class="text-[15px] lg:text-base leading-[1.65] text-dark mt-0 mb-3">
+                  {project.summary}
+                </p>
+
+                <ul class="mt-0 mb-5 pl-5">
+                  {project.bullets.map((bullet) => (
+                    <li class="text-[15px] lg:text-base leading-[1.65] text-text-secondary mb-1.5 last:mb-0">
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
